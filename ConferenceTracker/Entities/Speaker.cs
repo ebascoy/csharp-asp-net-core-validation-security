@@ -25,19 +25,16 @@ namespace ConferenceTracker.Entities
         [Required]
         [Display(Name = "First name")]
         [DataType(DataType.Text)]
-        [MaxLength(100)]
-        [MinLength(2)]
+        [StringLength(100, MinimumLength = 2)]
         public string FirstName { get; set; }
         [Required]
         [Display(Name = "Last name")]
         [DataType(DataType.Text)]
-        [MaxLength(100)]
-        [MinLength(2)]
+        [StringLength(100, MinimumLength = 2)]
         public string LastName { get; set; }
         [Required]
         [DataType(DataType.MultilineText)]
-        [MaxLength(500)]
-        [MinLength(10)]
+        [StringLength(500, MinimumLength = 10)]
         public string Description { get; set; }
         [Display(Name = "Email Address")]
         [DataType(DataType.EmailAddress)]
