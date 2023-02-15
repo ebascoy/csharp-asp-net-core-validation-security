@@ -46,10 +46,18 @@ namespace ConferenceTracker.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Administrators")]
+        [ValidateAntiForgeryToken]
         public IActionResult Create(Speaker speaker)
         {
-            _speakerRepository.Create(speaker);
-            return RedirectToAction(nameof(Index));
+            if (ModelState.IsValid)
+            {
+                _speakerRepository.Create(speaker);
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                return View(speaker);
+            }
         }
 
         [HttpGet]
